@@ -1,0 +1,2 @@
+# COMP6048001-Data-Structures
+This course provides students with data structure basic concept in which will be frequently used in software engineering and programming practices, concept of array, structure, linked list, stack, queue, graph, and trees. By completing this course, students can do the implementation of data structure concept in C programming language and estimates its complexity in the usage. 
