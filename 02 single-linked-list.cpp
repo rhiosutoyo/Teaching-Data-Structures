@@ -10,7 +10,7 @@ struct tnode{		// abstract data type
 // a function to push a value to the front of the single linked list
 void push_front(int value){
 	// 1 create an empty node
-	struct tnode *node = (tnode*)malloc(sizeof(tnode*));
+	struct tnode *node = (tnode*)malloc(sizeof(tnode));
 	// 2 set the given value to the new node
 	node->x = value;
 	// 3a if the linked is empty	
@@ -30,7 +30,7 @@ void push_front(int value){
 // a function to push a value to the back of the single linked list
 void push_back(int value){
 	// 1 create an empty node
-	struct tnode *node = (tnode*)malloc(sizeof(tnode*));
+	struct tnode *node = (tnode*)malloc(sizeof(tnode));
 	// 2 set the given value to the new node
 	node->x = value;
 	// 3a if the linked is empty	
@@ -51,7 +51,7 @@ void push_back(int value){
 
 void push_middle_after_given_node(int value, int searchKey){
 	// 1 create an empty node
-	struct tnode *node = (tnode*)malloc(sizeof(tnode*));
+	struct tnode *node = (tnode*)malloc(sizeof(tnode));
 	// 2 set the given value to the new node
 	node->x = value;
 	// 3a if the linked is empty	
