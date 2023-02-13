@@ -10,7 +10,8 @@ int main(){
 	printf("Value	: %d\n", a);
 	printf("Address	: %d\n", &a);
 	printf("Size	: %d\n", sizeof(a));
-	
+	*pa = 89;
+		
 	puts("\n");
 	
 	// *pa
@@ -19,13 +20,14 @@ int main(){
 	printf("Address			: %d\n", &pa);
 	printf("Size			: %d\n", sizeof(pa));
 	printf("Reference Value		: %d\n", *pa);
+    **ppa = 77;	
 	
 	puts("\n");
 	
 	// **pa
 	printf("Detail of **ppa\n");
 	printf("Value			: %d\n", ppa);
-	printf("Address			: %d\n", &ppa);
+	printf("Address	 		: %d\n", &ppa);
 	printf("Size			: %d\n", sizeof(ppa));
 	printf("Reference Value		: %d\n", **ppa);
 	// *(*ppa) = (*pa) = a
