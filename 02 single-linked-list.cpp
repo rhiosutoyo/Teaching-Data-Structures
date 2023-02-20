@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 // the structure of the node: it has an integer value and a pointer
-struct tnode{		// abstract data type
+struct tnode{			// abstract data type
 	int x;				// a value or data elements
 	tnode *next;		// a pointer to the next node
 }*head, *tail;
@@ -65,6 +65,7 @@ void push_middle_after_given_node(int value, int searchKey){
 		struct tnode *curr = head;
 		// 3b2 move the pointer to the next node until NULL / TAIL
 		while(curr != NULL){
+			 
 			// 3b3 check whether the current node equal the given search key
 			if(curr->x == searchKey){
 				if(curr == tail){
@@ -191,17 +192,22 @@ void delete_node(int nodePosition){
 
 int main(){
 	printf("PUSH DATA\n");
+
 	push_front(18);
 	push_front(34);
 	push_front(74);
 	push_front(21);
+	printList(); getchar();
+
 	push_back(77);
 	push_back(88);
 	push_back(99);
+	printList(); getchar();
+
 	push_middle_after_given_node(999, 74);
 	push_middle_after_given_node(101, 99);
 	push_middle_after_given_node(199, 21);
-	push_middle_after_given_node(199, 789);
+	push_middle_after_given_node(888, 789);
 	printList(); getchar();
 
 	printf("DELETE FRONT 3 TIMES\n");
