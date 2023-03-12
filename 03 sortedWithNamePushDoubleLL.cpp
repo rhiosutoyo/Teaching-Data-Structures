@@ -34,9 +34,7 @@ void pushSorted(int number, char name[]){
 
 		// FIND A LOCATION FOR OUR NEW NODE 
 		curr = head;
-		//while(curr->number < newNode->number){
 		while(strcmp(curr->name, newNode->name) < 0){	// FOR A - Z or ASCENDING
-			//printf("ganteng\n");
 			curr = curr-> next;
 			if(curr == NULL) break;
 		}
