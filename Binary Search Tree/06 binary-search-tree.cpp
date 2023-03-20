@@ -42,6 +42,10 @@ struct node *newNode(int x) {
 
 struct node *insert(struct node *root, int value) {
 	if (root == NULL) return newNode(value);
+	else if (value == root->key){
+		printf("Duplicate Value\nPlease insert another one!\n");
+		getchar();		
+	}
 	else if (value < root->key) {
 		root->left = insert(root->left, value);
 	} else {
@@ -99,8 +103,8 @@ struct node *deleteValue(struct node *root, int value) {
 void printAll(struct node *root) {
 	if (root == NULL) return;
 	printAll(root->left);
-	printf(" %d ", root->key);
 	printAll(root->right);
+	printf(" %d ", root->key);
 }
 
 struct node *freeAll(struct node *root) {
@@ -119,10 +123,16 @@ int main() {
 	root = insert(root, 15);
 	root = insert(root, 3);
 	root = insert(root, 12);
+	printAll(root);
+	puts("");
+
+	// duplicate value
+	root = insert(root, 15);
+
 	root = insert(root, 8);
 	root = insert(root, 19);
-	
 	printAll(root);
+	
 	puts("");
 	
 	root = deleteValue(root, 10);
