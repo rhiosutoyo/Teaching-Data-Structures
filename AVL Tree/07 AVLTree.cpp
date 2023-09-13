@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+// in AVL, there's height to calculate the balance factor
 struct node {
 	int key;
 	int height;
@@ -8,11 +9,13 @@ struct node {
 	struct node *right;
 };
 
+// to check the maximum height for the node
 int max(int a, int b) {
 	if (a < b) return b;
 	else return a;
 }
 
+// get the height value
 int getHeight(struct node *root) {
 	if (root == NULL) return 0;
 	return root->height;
@@ -95,17 +98,22 @@ struct node *insert(struct node *root, int value) {
 	root->height = max(getHeight(root->left), getHeight(root->right)) + 1;
 	int bfactor = getBF(root);
 		
-	// if violoation, then rotate
+	// if violation, then perform rotation
+
+	// LL
 	if (bfactor > 1 && value < root->left->key) {
 		return rightRotate(root);
 	}
+	// RR
 	if (bfactor < -1 && value > root->right->key) {
 		return leftRotate(root);
 	}
+	// LR
 	if (bfactor > 1 && value > root->left->key) {
 		root->left = leftRotate(root->left);
 		return rightRotate(root);
 	}
+	// RL
 	if (bfactor < -1 && value < root->right->key) {
 		root->right = rightRotate(root->right);
 		return leftRotate(root);
