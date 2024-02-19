@@ -23,6 +23,7 @@ int main(){
 	printf("Size			: %d\n", sizeof(pa));
 	*pa = 89;
 	printf("Reference Value		: %d\n", *pa);
+	printf("Value of a		: %d\n", a);
 	
 	puts("\n");
 	
@@ -33,6 +34,7 @@ int main(){
 	printf("Size			: %d\n", sizeof(ppa));
     **ppa = 77;	
 	printf("Reference Value		: %d\n", **ppa);
+	printf("Value of a		: %d\n", a);
 
 	// *(*ppa) = (*pa) = a
 	

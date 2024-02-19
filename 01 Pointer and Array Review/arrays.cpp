@@ -28,7 +28,8 @@ int main(){
 	}
 
 	// print the array
-	printArray(n);
+//	printArray(n);
+	printArray(&n[0]);
 	
 	// input / change the value of the array
 	n[0] = 188;

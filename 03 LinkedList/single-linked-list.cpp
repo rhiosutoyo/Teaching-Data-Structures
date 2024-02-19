@@ -13,6 +13,8 @@ void push_front(int value){
 	struct tnode *node = (tnode*)malloc(sizeof(tnode));
 	// 2 set the given value to the new node
 	node->x = value;
+//	(*node).x = value; 		// or bisa juga pakai cara ini utk assign value
+
 	// 3a if the linked is empty	
 	if(head == NULL){
 		head = tail = node;
@@ -122,6 +124,7 @@ void delete_front(){
 		}
 	}
 }
+
 void delete_back(){
 	// if the linked list is empty
 	if(head == NULL){
