@@ -194,6 +194,7 @@ void delete_node(int nodePosition){
 				}
 				before_del->next = del->next;
 				free(del);
+				del = NULL;
 			}
 		}
 	}	
