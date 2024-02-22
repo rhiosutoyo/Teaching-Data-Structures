@@ -91,8 +91,15 @@ void push_middle_after_given_node(int value, int searchKey){
 
 // a function to print the single linked list
 void printList(){
+	
+	if (head == NULL) { // if no nodes exist, or head doesn't exist
+		printf("\nList is empty.\n");
+		return;
+	}
+	
 	// 1 move a "moving pointer" to the head
 	struct tnode *curr = head;
+	
 	// 2 move the pointer to the next node until NULL / TAIL
 	while(curr != NULL){
 		// 3 print a value in the current node
