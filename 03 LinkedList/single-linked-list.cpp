@@ -112,6 +112,8 @@ void delete_front(){
 		if(head == tail){
 			free(head);
 			free(tail);
+			head = NULL;
+			tail = NULL;
 		}
 		// if the linked list have more than one element
 		else{
@@ -136,6 +138,8 @@ void delete_back(){
 		if(head == tail){
 			free(head);
 			free(tail);
+			head = NULL;
+			tail = NULL;
 		}
 		// if the linked list have more than one element
 		else{
@@ -166,6 +170,8 @@ void delete_node(int nodePosition){
 		if(head == tail){
 			free(head);
 			free(tail);
+			head = NULL;
+			tail = NULL;
 		}
 		// if the linked list have more than one element
 		else{
