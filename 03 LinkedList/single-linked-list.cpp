@@ -91,8 +91,15 @@ void push_middle_after_given_node(int value, int searchKey){
 
 // a function to print the single linked list
 void printList(){
+	
+	if (head == NULL) { // if no nodes exist, or head doesn't exist
+		printf("\nList is empty.\n");
+		return;
+	}
+	
 	// 1 move a "moving pointer" to the head
 	struct tnode *curr = head;
+	
 	// 2 move the pointer to the next node until NULL / TAIL
 	while(curr != NULL){
 		// 3 print a value in the current node
@@ -112,6 +119,8 @@ void delete_front(){
 		if(head == tail){
 			free(head);
 			free(tail);
+			head = NULL;
+			tail = NULL;
 		}
 		// if the linked list have more than one element
 		else{
@@ -136,6 +145,8 @@ void delete_back(){
 		if(head == tail){
 			free(head);
 			free(tail);
+			head = NULL;
+			tail = NULL;
 		}
 		// if the linked list have more than one element
 		else{
@@ -166,6 +177,8 @@ void delete_node(int nodePosition){
 		if(head == tail){
 			free(head);
 			free(tail);
+			head = NULL;
+			tail = NULL;
 		}
 		// if the linked list have more than one element
 		else{
@@ -188,6 +201,7 @@ void delete_node(int nodePosition){
 				}
 				before_del->next = del->next;
 				free(del);
+				del = NULL;
 			}
 		}
 	}	
