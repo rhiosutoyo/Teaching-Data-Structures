@@ -146,6 +146,14 @@ void deleteNode(char name[]){
 	}	
 }
 
+void deleteAll(){
+	while(head != NULL){
+		curr = head;
+		head = head->next;
+		free(curr);
+	}
+}
+
 int main(){
 	pushBack("Aurel", 10);
 	pushBack("Nico", 20);
@@ -168,8 +176,12 @@ int main(){
 	deleteNode("Rosalinee");
 	deleteNode("Rosaline");
 	deleteNode("Rosaline");
-
 	printAll();
+	
+	// delete all node from the linked list
+	deleteAll();
+	printf("\nYOUR DATA IN THE LINKED LIST IS CLEARED!\n");
+	
 	return(0);
 }
 
