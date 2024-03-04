@@ -1,7 +1,6 @@
 #include<stdio.h>
 #define SIZE 5
 
-
 int items[SIZE];
 int front = -1;
 int rear = -1;
@@ -73,9 +72,6 @@ void insert(){
 }
 
 int main(){
-
-   
-    
     do{
         printf("\nCircular Queue");
         printf("\n===============");
