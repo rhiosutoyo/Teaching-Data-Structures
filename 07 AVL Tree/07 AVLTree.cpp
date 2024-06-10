@@ -55,16 +55,6 @@ struct node *leftRotate(struct node *x) {
 	return y;
 }
 
-
-// di subtree kanan, ambil nilai terkecil
-struct node *successor(struct node *root) {	
-	struct node *cur = root->right;
-	while(cur->left != NULL) {
-		cur = cur->left;
-	}
-	return cur;
-}
-
 // di subtree kiri, ambil nilai terbesar
 struct node *predecessor(struct node *root) {	
 	struct node *cur = root->left;
