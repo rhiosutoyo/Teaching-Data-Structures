@@ -52,7 +52,7 @@ void showQueue(){
         printf("\n Front -> %d ", front);
         printf("\n Items -> ");
         for (i = front; i != rear; i = (i + 1) % SIZE) {
-        printf("%d ", items[i]);
+            printf("%d ", items[i]);
         }
         printf("%d ", items[i]);
         printf("\n Rear -> %d \n", rear);

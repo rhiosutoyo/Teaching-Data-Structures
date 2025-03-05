@@ -172,10 +172,13 @@ int main() {
 	char postfix[MAX_STRING];
 	char prefix[MAX_STRING];
 	
-	//strcpy(infix, "5*3/(2+3)-2*(4/2)");
-	//	strcpy(infix, "(1-2)/3*(4+5-6/7)");
-	strcpy(infix, "5-4*3+(2-1)");
-	
+	// strcpy(infix, "5*3/(2+3)-2*(4/2)");
+	// strcpy(infix, "(1-2)/3*(4+5-6/7)");
+	// strcpy(infix, "5-4*3+(2-1)");
+	// strcpy(infix, "4*10");
+	// strcpy(infix, "5+3*4");
+	strcpy(infix, "4+6*(5–2)/3");
+
 	convert_infix_to_postfix(infix, postfix);
 	convert_infix_to_prefix(infix, prefix);
 	
