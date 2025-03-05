@@ -3,7 +3,8 @@
 
 // head is for the first node
 // tail is for the last node
-// curr is for the moving node 
+// curr is for the moving node
+
 struct data{
 	int number;
 	struct data *next;
