@@ -28,30 +28,80 @@ int getBF(struct node *root) {
 }
 
 struct node *rightRotate(struct node *y) {
+	/*
+	Example before rotation:
+	         y
+	       /
+	      x
+	       \
+	        B
+
+	After right rotation:
+	         x
+	         \
+	          y
+	         /
+	        B
+	*/
+
+	// y = node that becomes unbalanced
+	// x = left child of y
 	struct node *x = y->left;
+
+	// B = right subtree of x
+	// this subtree will be moved to the other side
 	struct node *B = x->right;
 	
-	// rotate
+	// perform rotation	
+	// x becomes new parent
 	x->right = y;
+	// B becomes left child of y
 	y->left = B;
 	
+	// update heights
 	y->height = max(getHeight(y->left), getHeight(y->right)) + 1;
 	x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
-	
+		
+	// return new root
 	return x;
 }
 
 struct node *leftRotate(struct node *x) {
+	/*
+		Before rotation:
+        x
+         \
+          y
+         /
+        B
+
+		After rotation:
+          y
+         /
+        x
+         \
+          B
+	*/
+
+	// x = unbalanced node
+	// y = right child of x
 	struct node *y = x->right;
+
+	// B = left subtree of y
+	// this subtree will be moved to the other side
 	struct node *B = y->left;
 	
-	// rotate
+	// perform rotation	
+	// y becomes new parent
 	y->left = x;
+	// B becomes right child of x
 	x->right = B;
 	
+	// update heights
 	x->height = max(getHeight(x->left), getHeight(x->right)) + 1;
 	y->height = max(getHeight(y->left), getHeight(y->right)) + 1;
 	
+	// return new root
 	return y;
 }
 
@@ -178,11 +228,11 @@ struct node *deleteValue(struct node *root, int value) {
 }
 
 
-void printAll(struct node *root) {
+void printPreOrder(struct node *root) {
 	if (root == NULL) return;
-	printAll(root->left);
-	printf(" %d ", root->key);
-	printAll(root->right);
+	printf("%3d", root->key);
+	printPreOrder(root->left);
+	printPreOrder(root->right);
 }
 
 struct node *freeAll(struct node *root) {
@@ -195,28 +245,42 @@ struct node *freeAll(struct node *root) {
 
 int main() {
 	struct node *root = NULL;
-	
-	root = insert(root, 10);
-	root = insert(root, 5);
-	root = insert(root, 7);
-	root = insert(root, 15);
+
+	// LL CASE
+	root = insert(root, 30);
 	root = insert(root, 20);
-	root = insert(root, 17);
-	
-	printAll(root);
-	puts("");
-	
-	root = deleteValue(root, 10);
-	
-	printAll(root);
-	puts("");
-	
-	root = deleteValue(root, 15);
-	
-	printAll(root);
-	puts("");
+	root = insert(root, 10);
+	printf("LL Rotation:\n");
+	printPreOrder(root);
+	puts("\n");
+
+	// RR CASE
+	root = NULL;
+	root = insert(root, 10);
+	root = insert(root, 20);
+	root = insert(root, 30);
+	printf("RR Rotation:\n");
+	printPreOrder(root);
+	puts("\n");
+
+	// LR CASE
+	root = NULL;
+	root = insert(root, 30);
+	root = insert(root, 10);
+	root = insert(root, 20);
+	printf("LR Rotation:\n");
+	printPreOrder(root);
+	puts("\n");
+
+	// RL CASE
+	root = NULL;
+	root = insert(root, 10);
+	root = insert(root, 30);
+	root = insert(root, 20);
+	printf("RL Rotation:\n");
+	printPreOrder(root);
+	puts("\n");
 	
 	root = freeAll(root);
-	
 	return 0;
 }
