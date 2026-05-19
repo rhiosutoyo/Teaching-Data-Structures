@@ -47,6 +47,11 @@ void upheap(int idx){
 }
 
 void push(int input){
+	// defensive guard
+	if (dataCount >= 100) {
+		printf("Heap Overflow!\n");
+		return;
+    }
 	// add new value to the end of array
 	minHeap[dataCount] = input;
 	// perform uphead;
@@ -56,8 +61,6 @@ void push(int input){
 }
 
 void downHeap(int idx){
-	// if there is no child, then terminate downHeap
-	if(idx >= dataCount) return;
 	// assume the current node is the smallest one
 	int smallest = idx;
 	// get value of left child
@@ -66,10 +69,10 @@ void downHeap(int idx){
 	int rightValue = getRightIndex(idx);
 	
 	// determine smallest between current node and left child
-	if(minHeap[leftValue] < minHeap[smallest] && leftValue < dataCount)
+	if(leftValue < dataCount && minHeap[leftValue] < minHeap[smallest])
 		smallest = leftValue;
 	// determine smallest between current node and right child
-	if(minHeap[rightValue] < minHeap[smallest] && rightValue < dataCount)
+	if(rightValue < dataCount && minHeap[rightValue] < minHeap[smallest])
 		smallest = rightValue;	
 	// if current node is still the smallest one, terminate downheap
 	if(smallest == idx) return;
@@ -78,6 +81,9 @@ void downHeap(int idx){
 }
 
 int pop(){
+	// defensive guard
+	if (dataCount <= 1) return -1;
+
 	int removed = minHeap[1];
 	swapValue(1, dataCount-1);
 	dataCount--;
@@ -92,16 +98,14 @@ void createMenu(){
 }
 
 int main(){
-	/*
 	int arrData[] = {100, 18, 22, 34, 88, 55, 69, 76, 10, 5};
 	for(int i=0 ; i<10 ; i++){
 		push(arrData[i]);
 	}
-	*/
 
 	int input = -1, num;
 	do{
-		printf("DATA:\n", dataCount);
+		// printf("DATA:\n", dataCount);
 		viewHeap();
 		createMenu();
 		do{
@@ -110,11 +114,11 @@ int main(){
 		}while(input < 1 || input > 3);
 		
 		switch(input){
-			case 1	: 	printf("What data should be inputted into the hash? ");
+			case 1	: 	printf("What data should be inputted into the heap? ");
 						scanf("%d", &num); getchar();
 						push(num);
-						printf("%d has been inserted into the hash\n\n", num);
-						getchar();
+						printf("%d has been inserted into the heap\n\n", num);
+						// getchar();
 						break;
 
 			case 2	: 	if(dataCount <= 1){
@@ -123,7 +127,7 @@ int main(){
 						else{
 							printf("%d has been deleted\n\n", pop());
 						}
-						getchar();
+						// getchar();
 						break;
 		}
 	}while(input != 3);
