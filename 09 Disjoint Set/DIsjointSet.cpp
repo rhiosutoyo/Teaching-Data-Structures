@@ -1,6 +1,12 @@
+/*  FUNCTION IN DISJOINT SET
+	makeset()      = create initial groups
+	swap()         = exchange two values
+	find_set()     = find representative parent
+	union_sets()   = merge two sets
+	isSameSet()    = check whether two vertices belong to same set
+*/
+
 #include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
 #include<stdbool.h>
 
 // parent array stores representative parent
