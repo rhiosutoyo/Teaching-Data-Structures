@@ -1,6 +1,9 @@
 #include<stdio.h>
+#include<string.h>
 
 int minHeap[100];
+char itemName[100][30];
+
 int dataCount = 1;
 
 int getParentIndex(int index){
@@ -21,7 +24,7 @@ void viewHeap(){
 	}
 	else{
 		for(int i=1 ; i<dataCount ; i++){
-			printf("Heap[%2d] = %d\n", i, minHeap[i]);
+			printf("Heap[%d] = %d - %s\n", i, minHeap[i], itemName[i]);
 		}
 		puts("");
 	}
@@ -31,6 +34,11 @@ void swapValue(int parentIndex, int currIdx){
 	int temp = minHeap[parentIndex];
 	minHeap[parentIndex] = minHeap[currIdx];
 	minHeap[currIdx] = temp;
+	
+	char tempString[30];
+	strcpy(tempString, itemName[parentIndex]);
+	strcpy(itemName[parentIndex], itemName[currIdx]);
+	strcpy(itemName[currIdx], tempString);
 }
 
 void upheap(int idx){
@@ -41,12 +49,12 @@ void upheap(int idx){
 	// if parent value is lower than child value, then terminate upheap
 	if(minHeap[parentIndex] <= minHeap[idx]) return;
 	// else, swap the parent value with child value
-	swapValue(parentIndex, idx);
+	swapValue(parentIndex, idx);	
 	// continue uphead until root is reached
 	upheap(parentIndex);
 }
 
-void push(int input){
+void push(int input, char name[]){
 	// defensive guard
 	if (dataCount >= 100) {
 		printf("Heap Overflow!\n");
@@ -54,8 +62,11 @@ void push(int input){
     }
 	// add new value to the end of array
 	minHeap[dataCount] = input;
+	strcpy(itemName[dataCount], name);
+
 	// perform uphead;
 	upheap(dataCount);
+
 	// increment data count
 	dataCount++;
 }
@@ -99,11 +110,16 @@ void createMenu(){
 
 int main(){
 	int arrData[] = {100, 18, 22, 34, 88, 55, 69, 76, 10, 5};
+	char itemList[][30] = {"Coffee", "Microphone", "Marker", "Mouse", "PC", "Remote Control", "Web Cams", 
+	"Chair","Table","Monitor"};
+
 	for(int i=0 ; i<10 ; i++){
-		push(arrData[i]);
+		push(arrData[i], itemList[i]);
 	}
 
 	int input = -1, num;
+	char name[30];
+
 	do{
 		// printf("DATA:\n", dataCount);
 		viewHeap();
@@ -116,8 +132,12 @@ int main(){
 		switch(input){
 			case 1	: 	printf("What data should be inputted into the heap? ");
 						scanf("%d", &num); getchar();
-						push(num);
-						printf("%d has been inserted into the heap\n\n", num);
+	
+						printf("What item name should be inputted into the heap? ");
+						scanf("%[^\n]", name); getchar();
+	
+						push(num, name);
+						printf("%d %s has been inserted into the heap\n\n", num, name);
 						// getchar();
 						break;
 
